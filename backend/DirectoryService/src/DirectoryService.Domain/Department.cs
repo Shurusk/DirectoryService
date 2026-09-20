@@ -3,7 +3,9 @@
 public class Department
 {
     Guid Id { get; set; }
+
     string Name { get; set; }
+
     string Identifie { get; set; }
 
     Guid ParentId { get; set; }
@@ -14,8 +16,16 @@ public class Department
     bool IsActive { get; set; }
 
     DateTime CreatedAt { get; set; }
-        
+
     DateTime UpdateAt { get; set; }
+
+    public DepartmentName(Guid id, string name)
+    {
+
+        Id = id;
+
+        Name = name;
+    }
 }
 
 

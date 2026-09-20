@@ -1,1 +1,6 @@
-{}
+{
+    "csharp-dev-tools.solutionViewer.selectedWorkspaceSolutions": [
+        "backend/DirectoryService/DirectoryService.slnx",
+        "backend/DirectoryService/src/DirectoryService.slnx"
+    ]
+}
