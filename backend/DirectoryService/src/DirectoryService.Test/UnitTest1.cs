@@ -6,8 +6,9 @@ public class UnitTest1
     [Fact]
     public void Test1()
     {
-        Department Name = new DepartmentName(Guid.NewGuid(), "Покупки");
-        Location Address = new Location(Guid.NewGuid(), "Нижние челны");
+        Guid Id = Guid.NewGuid();
+        Department Name = new Department(Id, "Закупки");
+        Location Address = new Location(Id, "Менеджер по закупкам");
 
     }
 }

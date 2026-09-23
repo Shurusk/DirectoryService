@@ -19,12 +19,30 @@ public class Department
 
     DateTime UpdateAt { get; set; }
 
-    public DepartmentName(Guid id, string name)
+    public Department(Guid id, string name)
     {
 
-        Id = id;
+        
+        if (id == Guid.Empty)
+        {
+            throw new ArgumentException("Индификатор не может быть пустым.", nameof(id));
+        }
 
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Название должности не может быть пустым", nameof(name));
+        }
+        
+        Id = id;
         Name = name;
+
+        string Path = Name.ToLower() switch
+{
+    "закупки" => "",
+    "рабочий"  => "",
+    "продажник"   => "",
+    _         => "Несуществующее значение." 
+};
     }
 }
 
