@@ -1,4 +1,6 @@
-﻿namespace DirectoryService.Domain;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DirectoryService.Domain;
 
 public class Department
 {
@@ -19,10 +21,10 @@ public class Department
 
     DateTime UpdateAt { get; set; }
 
-    public Department(Guid id, string name)
+    public Department(Guid id, string name, string identifie, Guid parentid, short depth, bool isactive, DateTime createdat, DateTime updateat)
     {
 
-        
+
         if (id == Guid.Empty)
         {
             throw new ArgumentException("Индификатор не может быть пустым.", nameof(id));
@@ -30,19 +32,29 @@ public class Department
 
         if (string.IsNullOrWhiteSpace(name))
         {
-            throw new ArgumentException("Название должности не может быть пустым", nameof(name));
+            throw new ArgumentException("Название должности не может быть пустым.", nameof(name));
         }
-        
+
+        if (name.Length > 256)
+        {
+            throw new ArgumentException("Название должности слишком большое.", nameof(name));
+        }
+
         Id = id;
         Name = name;
+        Identifie = identifie;
+        ParentId = parentid;
+        Depth = depth;
+        IsActive = isactive;
+        CreatedAt = createdat;
+        UpdateAt = updateat;
 
-        string Path = Name.ToLower() switch
-{
-    "закупки" => "",
-    "рабочий"  => "",
-    "продажник"   => "",
-    _         => "Несуществующее значение." 
-};
+
+    }
+
+    private static int GetLength(string name)
+    {
+        return name.Length;
     }
 }
 
