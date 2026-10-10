@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Common;
 
 namespace DirectoryService.Domain;
 
@@ -6,7 +7,7 @@ public class Department
 {
     Guid Id { get; set; }
 
-    string Name { get; set; }
+    Name Name { get; set; }
 
     string Identifie { get; set; }
 
