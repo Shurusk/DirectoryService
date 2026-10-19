@@ -1,8 +1,11 @@
+using DirectoryService.Domain.Positions;
+
+
 public class Position
 {
-    Guid Id { get; set; }
+    PosId Id { get;}
 
-    string Name { get; set; }
+    PosName Name { get; set; }
 
     string Description { get; set; }
 
@@ -12,8 +15,7 @@ public class Position
 
     DateTime UpdateAt { get; set; }
 
-    public Position(Guid id, string name, string description, bool isactive, DateTime createdat, DateTime updateat) {
-        
+    public Position(PosId id, PosName name, string description, bool isactive, DateTime createdat, DateTime updateat) {
         Id = id;
         Name = name;
         Description = description;
