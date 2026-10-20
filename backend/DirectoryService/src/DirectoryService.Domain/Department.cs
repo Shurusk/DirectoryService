@@ -7,7 +7,7 @@ public class Department
 {
     Guid Id { get; set; }
 
-    Name Name { get; set; }
+    string Name { get; set; }
 
     string Identifie { get; set; }
 
