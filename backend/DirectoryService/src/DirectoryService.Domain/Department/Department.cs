@@ -31,15 +31,7 @@ public sealed class Department
   {
     public void RemoveDepName(Department department, DepName NewName)
     {
-      if (department.IsActive == true)
-      {
-        throw new InvalidOperationException("Cannot remove the name of an active department.");
-      }
-      else
-      {
-        department.Name = NewName;
-      }
-      
+      department.Name = NewName;
     }
   }
     public void AddBop()
