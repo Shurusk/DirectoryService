@@ -4,6 +4,11 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <RootNamespace>DirectoryService.Domain.Archive</RootNamespace>
+    <RootNamespace>DirectoryService.Domain.Location</RootNamespace>
+    <RootNamespace>DirectoryService.Domain.Positions</RootNamespace>
+    <RootNamespace>DirectoryService.Domain.Department</RootNamespace>
   </PropertyGroup>
 
 </Project>

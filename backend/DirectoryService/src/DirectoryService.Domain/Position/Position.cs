@@ -1,5 +1,5 @@
 using DirectoryService.Domain.Positions;
-
+using DirectoryService.Domain.Archive;
 public class Position
 {
     PosId Id { get; }
@@ -28,7 +28,9 @@ public class Position
   {
         public void RemovePosName(Position position, PosName NewName)
         {
-            position.Name = NewName;
+            if (Archive.ArchiveCondition == false){
+                position.Name = NewName;
+            }
         }
   }
 }

@@ -1,5 +1,5 @@
 ﻿namespace DirectoryService.Domain.Department;
-
+using DirectoryService.Domain.Archive;
 public sealed class Department
 {
     private readonly List<Department> _department = [];
@@ -30,9 +30,10 @@ public sealed class Department
   public class RemoveDepartment
   {
     public void RemoveDepName(Department department, DepName NewName)
-    {
-      department.Name = NewName;
-    }
+        {
+            if (!Archive.ArchiveCondition) department.Name = NewName;
+            else throw new ArgumentException("Профиль заархивирован. Измененеие запрещено.", nameof(department.Name));
+          }
   }
     public void AddBop()
     { }
