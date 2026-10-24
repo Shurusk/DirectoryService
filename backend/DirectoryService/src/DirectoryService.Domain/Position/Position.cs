@@ -12,7 +12,7 @@ public class Position
 
     private DateTime CreatedAt { get; }
 
-    private DateTime UpdateAt { get; }
+    private DateTime UpdateAt { get; set; }
 
     public Position(PosId id, PosName name, string description, bool isactive, DateTime createdat, DateTime updateat)
     {
@@ -24,13 +24,14 @@ public class Position
         UpdateAt = updateat;
     }
 
-    public class RemovePosition
-  {
+
         public void RemovePosName(Position position, PosName NewName)
         {
-            if (Archive.ArchiveCondition == false){
-                position.Name = NewName;
-            }
+        if (!Archive.ArchiveCondition)
+        {
+            position.Name = NewName;
+            position.UpdateAt = DateTime.Now;
         }
-  }
+        else throw new ArgumentException("Профиль заархивирован. Измененеие запрещено.", nameof(position.Name));
+        }
 }

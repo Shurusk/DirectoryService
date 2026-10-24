@@ -27,14 +27,17 @@ public sealed class Department
 
     }
 
-  public class RemoveDepartment
-  {
+
     public void RemoveDepName(Department department, DepName NewName)
         {
-            if (!Archive.ArchiveCondition) department.Name = NewName;
+        if (!Archive.ArchiveCondition) 
+            {
+            department.Name = NewName;
+            department.UpdateAt = DateTime.Now;
+        }
             else throw new ArgumentException("Профиль заархивирован. Измененеие запрещено.", nameof(department.Name));
           }
-  }
+
     public void AddBop()
     { }
     private static int GetLength(string name)

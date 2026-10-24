@@ -6,10 +6,8 @@ public class Location
     LocId Id { get;}
     string Address { get; }
     private LocName Name { get; set; }
-
     private string Timezone { get; set; }
-
-    private DateTime CreatedAt { get; }
+    private DateTime CreatedAt { get; set; }
     DateTime UpdateAt { get; set; }
 
   public Location(LocId id, LocName name, string address, string timezone, DateTime createdat, DateTime updateat)
@@ -22,17 +20,22 @@ public class Location
       UpdateAt = updateat;
     }
 
-  public class RemoveLocalation
-  {
-      public void RemoveLocalName(Location location, LocName NewName)
+  public void RemoveLocalName(Location location, LocName NewName)
+    {
+        if (!Archive.ArchiveCondition)
         {
-            if (!Archive.ArchiveCondition) location.Name = NewName;
-            else throw new ArgumentException("Профиль заархивирован. Измененеие запрещено.", nameof(location.Name));
+          location.Name = NewName;
+          location.UpdateAt = DateTime.Now;
         }
-        public void RemoveLocalTimezone(Location location, string NewTimeZone)
-        {
-          if (!Archive.ArchiveCondition) location.Timezone = NewTimeZone;
-            else throw new ArgumentException("Профиль заархивирован. Измененеие запрещено.", nameof(location.Timezone));
-        }
-  }
+        else throw new ArgumentException("Профиль заархивирован. Измененеие запрещено.", nameof(location.Name));
+    }
+    public void RemoveLocalTimezone(Location location, string NewTimeZone)
+    {
+        if (!Archive.ArchiveCondition) 
+      {
+          location.Timezone = NewTimeZone;
+          location.UpdateAt = DateTime.Now;
+      }
+        else throw new ArgumentException("Профиль заархивирован. Измененеие запрещено.", nameof(location.Timezone));
+    }
 }
