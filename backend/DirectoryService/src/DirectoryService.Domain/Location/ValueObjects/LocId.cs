@@ -13,7 +13,5 @@ public readonly record struct LocId
         Value = inputId;
     }
     public static implicit operator LocId(Guid value) => new(value);
-
     public static implicit operator Guid(LocId id) => id.Value;
-
 }
